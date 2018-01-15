@@ -10,3 +10,6 @@
 #### A:有，使用 object-fit属性，object-fit:cover
 #### 虽然很好用很有效但是ie浏览器全线不支持，ie手机浏览器也不支持，据说安卓版微信也不兼容（也许是老版本）
 
+### Q:vue-cli 使用 less 问题，安装后报 Cannot find module 'less' 的错误
+#### A:vue-cli本身可以使用less-loader，安装后重新运行即可。如果报错Cannot find module 'less'的错误，这个锅似乎要cnpm背。是因为cnpm在安装时少了一个less的入口文件，需要单独安装
+#### npm i --save-dev less 安装即可
