@@ -13,3 +13,8 @@
 ### Q:vue-cli 使用 less 问题，安装后报 Cannot find module 'less' 的错误
 #### A:vue-cli本身可以使用`less-loader`，安装后重新运行即可。如果报错Cannot find module 'less'的错误，这个锅似乎要cnpm背。是因为cnpm在安装时少了一个`less`的入口文件，需要单独安装
 #### `npm i --save-dev less` 安装即可
+
+### Q:如何在不同的行中使不定数量的图片显示适当
+#### A:使用css3新伪类`last-nth-child(n)`搭配兄弟选择器`~`使用
+#### `li img:last-nth-child(2),img:last-nth-child(2)~img{ #code }`
+#### `li img:last-nth-child(3),img:last-nth-child(3)~img{ #code }`
