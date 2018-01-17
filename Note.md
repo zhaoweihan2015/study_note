@@ -18,3 +18,6 @@
 #### A:使用css3新伪类`last-nth-child(n)`搭配兄弟选择器`~`使用
 #### `li img:last-nth-child(2),img:last-nth-child(2)~img{ #code }`
 #### `li img:last-nth-child(3),img:last-nth-child(3)~img{ #code }`
+
+### Q:验证对象中某属性是否存在
+#### A:别再验证它是否为undefined了，改用`hasOwnProprety`
