@@ -32,7 +32,7 @@ li img:last-nth-child(3),img:last-nth-child(3)~img{
 #### A:别再验证它是否为undefined了，改用`hasOwnProprety`
 
 ### Q:背景图在加载完成后显示
-#### A:很多时候为了`cover`显示放弃img改用背景属性（虽然可以用`object-fit`，但是IE不兼容）,可以采取比较曲线的方法
+#### A:很多时候为了`cover`显示放弃img改用背景属性（虽然可以用`object-fit`，但是IE不兼容）,但加载时会出现渐变闪烁逐层出现的问题,可以采取比较曲线的方法
 #### 我的做法是先生成一个Image对象，在Image加载成功后添加背景，这样读取的是缓存中的图片，加载就会快速显示
 ```javascript
 var src = 'bg.png',
