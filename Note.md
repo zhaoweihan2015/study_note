@@ -37,7 +37,6 @@ li img:last-nth-child(3),img:last-nth-child(3)~img{
 ```javascript
 var src = 'bg.png',
     img = new Image()
-
 img.onload = function(){
   el.style.backgroundImage = src 
 }
