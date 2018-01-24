@@ -44,3 +44,12 @@ img.onload = function(){
 img = null // 清空对象
 ```
 #### PS:canvas的图片填充同理，如果需要图片加载填充完成后进行操作，也需要用到`onload`（不过小心回调地狱）
+
+### Q:IOS手机在上传照片方向不对问题
+#### A:首先安卓手机拍摄后的照片本身会被处理一遍，按照拍摄方向进行转向，IOS虽然不会处理但是会在图片的原始数据包含照片信息（包括地理位置，手机型号，拍照方向，曝光度，光圈选择等问题），除了IOS，部分单反拍摄的照片的原始数据也会包含信息
+#### 处理方法为使用`exif.js`检测图片的元数据，然后根据`Orientation`属性判断照片方向
+```javascript
+EXIF.getData(IMG, function(){
+  EXIF.getTag(this, 'Orientation');
+});
+```
