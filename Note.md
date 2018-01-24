@@ -37,10 +37,11 @@ li img:last-nth-child(3),img:last-nth-child(3)~img{
 ```javascript
 var src = 'bg.png',
     img = new Image()
-img.src = src
+
 img.onload = function(){
   el.style.backgroundImage = src 
 }
+img.src = src // 一定要在onload之后设置，不然IE中会出现错误
 img = null // 清空对象
 ```
 #### PS:canvas的图片填充同理，如果需要图片加载填充完成后进行操作，也需要用到`onload`（不过小心回调地狱）
