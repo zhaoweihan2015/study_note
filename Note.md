@@ -52,4 +52,4 @@ img = null // 清空对象
 EXIF.getData(IMG, function(){
   EXIF.getTag(this, 'Orientation');
 });
-```
+``` 
