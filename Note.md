@@ -60,3 +60,28 @@ EXIF.getData(IMG, function(){
 #### 1.IOS手机拍摄的照片同单反一样，附带exif原始数据（包含拍摄时设备方向，地理位置，设备型号等），但是拍摄后照片是相对于设备方向的。安卓手机拍摄的照片不附带exif原始数据，但是拍摄后的照片会经过系统处理变为相对于地理位置（重力）方向的图片。而经过处理的照片（ps等工具）会丢失exif原始数据，以处理后的方向为准。
 ####   所以在这里出现的问题就是ios和单反拍摄的竖向照片（非机器正方向照片），在web读取的时候全部“倒下”（以原设备正方向），处理方法见上一个问题
 #### 2.PC浏览器和安卓手机在选择一次图片后第二次选择时选择取消也会触发change事件，并且input标签的files属性会被清空（取消所有选择），而IOS会保持上一次的状态（取消这次选择），且不会触发change事件
+
+### Q:图片上传检测问题
+#### A:对于一个图片上传总会有人上传奇奇怪怪的东西。哪怕没有人上传测试会去传各种奇怪的东西去测试
+#### 1.上传内容不为图片
+#### 解决方法是使用`this.files[0].name.split('.')[1]`取得后缀名来进行后缀名判断（对于一个文件名字多.的，请使用length-1解决）
+```javascript
+ var filesName = this.files[0].name.split('.'),
+     filesTypeArr = ['jpg', 'png', 'jpeg', 'JPG', 'PNG', 'JPEG']
+      filesName = filesName[filesName.length - 1]
+      if (filesTypeArr.indexOf(filesName) == -1) {
+            // 不是图片格式
+      } 
+```
+### 2.上传内容为损坏图片或者其他文件强行改为图片后缀
+#### 一般估计还真有人会这么干（比如我），因为原项目中有图片预览，取得的图片地址因为无法进行读取所以无法进行后续处理，解决方法为使用img.onerror
+```javascript
+  var img = new Image()
+  img.src = imgSrc
+  img.onload = function () {
+    // 图片加载成功之后
+  }
+  img.onerror = function () {
+    // 图片加载失败之后
+  }
+```
