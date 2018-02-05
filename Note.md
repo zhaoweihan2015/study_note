@@ -91,3 +91,7 @@ EXIF.getData(IMG, function(){
   }
 ```
 #### PS:`img.onerror`本身有兼容性问题，在火狐中会无法使用，原因比较简单，就是火狐把src的属性设为空不视作error错误
+
+## Q:手机端后退Input标签预填充
+#### A:在PC，安卓，IOS上都各有差异，pc安卓在后退后会带缓存进行“假”刷新，而ios是恢复到条状前的状态，差距还是不小的
+#### 如果希望后退后input中不带数据，请使用`form.reset()`进行清除数据，并在input标签上设置`autocomplete="off"`
