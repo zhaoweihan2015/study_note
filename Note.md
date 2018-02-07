@@ -1,6 +1,6 @@
 # 问题总结
 ## Q:如何预览图片
-#### A:使用 `createObjectURL` (注意兼容性) 
+#### A:使用 `createObjectURL` (注意兼容性)
 
 ## Q:如果多图片多input上传
 #### A:所谓的多图片上传不是单纯的使用`multiple`进行设置，而是多个input标签以同一字段进行上传，而使用同一name会被最后一个空值input覆盖，而且input并不存在name[]的使用方法（？需要查查）,所以需要用js进行数组填充拼接为`FilesList`后通过`FormData`进行上传
