@@ -95,3 +95,24 @@ EXIF.getData(IMG, function(){
 ## Q:手机端后退Input标签预填充
 #### A:在PC，安卓，IOS上都各有差异，pc安卓在后退后会带缓存进行“假”刷新，而ios是恢复到条状前的状态，差距还是不小的
 #### 如果希望后退后input中不带数据，请使用`form.reset()`进行清除数据，并在input标签上设置`autocomplete="off"`
+
+## Q:如何让伪数组使用数组方法
+#### A:这个解决方法还是在刷阿里前端面试题的时候发现的。如果我希望循环一个伪数组（比如dom节点集合或者arguments），但是我们无法使用forEach,因为forEach是内置对象Array的方法，而伪数组并不是Array，只是一个长得比较像Array的Object。但是我们依旧可以使用其他方法使伪数组使用数组方法
+```javascript
+function check (){
+  var res = []
+  for (var i = 0 ; i < arguments.length ; i ++) {
+    if(arguments[i] > 2){
+      res.push(arguments[i])
+    }
+  }
+  return res
+}
+
+function check () {
+  return Array.prototype.forEach.call(arguments,function(e){
+    return e > 2
+  })
+}
+```
+通过call()就可以使伪数组使用数组方法，具体原理还在研究。但是这种方法比for循环更加优雅且高效。
