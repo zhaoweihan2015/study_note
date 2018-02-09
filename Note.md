@@ -97,7 +97,7 @@ EXIF.getData(IMG, function(){
 #### 如果希望后退后input中不带数据，请使用`form.reset()`进行清除数据，并在input标签上设置`autocomplete="off"`
 
 ## Q:如何让伪数组使用数组方法
-#### A:这个解决方法还是在刷阿里前端面试题的时候发现的。如果我希望循环一个伪数组（比如dom节点集合或者arguments），但是我们无法使用forEach,因为forEach是内置对象Array的方法，而伪数组并不是Array，只是一个长得比较像Array的Object。但是我们依旧可以使用其他方法使伪数组使用数组方法
+#### A:这个解决方法还是在刷阿里前端面试题的时候发现的。如果我希望循环一个伪数组（比如dom节点集合或者arguments），但是我们无法使用forEach,因为forEach是内置对象Array的方法，而伪数组并不是Array，只是一个长得比较像Array但是没有Array方法的Object（虽然Array也是Object上附带的内置方法和属性）。但是我们依旧可以使用其他方法使伪数组使用数组方法
 ```javascript
 function check (){
   var res = []
