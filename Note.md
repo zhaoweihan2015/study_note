@@ -118,4 +118,24 @@ function check () {
 #### 伪数组具有数字的“型”，但是没有数组的方法，通过call()和prototype将数组的特有方法绑定上下文为伪数组，可以使伪数组使用数组方法。这种方法比for循环更加优雅且高效。
 
 ## Q:IOS手机无法自动播放音乐
-#### 正在解决中
+#### IOS手机通过某些设置禁止了web页面audio的自动播放，只能通过事件触发
+```javascript 
+  function autoplay2IOS () {
+    var music = document.getElementsByTagName('audio')[0],
+        play = function () {
+          music.play()
+        }
+    // 安卓手机和pc端电脑（直接播放）
+    play()
+    // ios微信端（需要二次开发）
+    document.addEventListener("WeixinJSBridgeReady",function(){
+      play()
+    })
+    // ios safari （增加手势事件，在事件触发时播放）
+    document.addEventListener("touchstart",function(){
+      play()
+    })
+ }
+```
+#### 对于在手机端使用自动播放还是放弃吧，IOS这问题它从根上挡住了，压根没法解决
+#### ps:然而我在测试的时候IOS手机哪怕是通过事件触发play()也无法播放声音，也许是IOS的微信缓存太大了
