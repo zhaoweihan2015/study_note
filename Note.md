@@ -142,13 +142,13 @@ function check () {
 
 ## Q:vue解决文字闪烁问题
 #### 在文字未加载之前会先显示{{}}再显示内容，会有闪烁问题。采用v-cloak属性可以解决
-#### javascript
-```javascript
+#### HTML
+```html
 	<div id="app" v-cloak>
 		<!-- code -->
 	</div>
 ```
-#### css
+#### CSS
 ```css
 	[v-cloak]{
 		display:none;
