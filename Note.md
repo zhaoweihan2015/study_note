@@ -139,3 +139,18 @@ function check () {
 ```
 #### 对于在手机端使用自动播放还是放弃吧，IOS这问题它从根上挡住了，压根没法解决
 #### ps:然而我在测试的时候IOS手机哪怕是通过事件触发play()也无法播放声音，也许是IOS的微信缓存太大了
+
+## Q:vue解决文字闪烁问题
+#### 在文字未加载之前会先显示{{}}再显示内容，会有闪烁问题。采用v-cloak属性可以解决
+```javascript
+	<div id="app" v-cloak>
+		<!-- code -->
+	</div>
+```
+```css
+	[v-cloak]{
+		display:none;
+	}
+```
+#### PS:v-cloak不用每一条都加，在总标签上添加既即可
+#### PS的PS:v-cloak需要和display:none配合使用，否则无效
