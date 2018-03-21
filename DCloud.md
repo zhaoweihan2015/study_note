@@ -43,3 +43,11 @@
 	})
 ```
 #### PS:个人在使用时效果还是不错的，但是无法达到原生那种顺滑，再努力优化优化看看。
+### 5.plus检测
+#### 找到的官方方法
+```javascript
+if(!navigator.userAgent.match(/Html5Plus/i)) {
+	//非5+引擎环境，直接return;					
+	return;									
+}												
+```
