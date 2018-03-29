@@ -1,6 +1,12 @@
 # 问题总结 
 ## Q:如何预览图片
 #### A:使用 `createObjectURL` (注意兼容性) 
+#### PS:最新问题，chorme在2018年7月取消`createObjectURL`对流的转换，所有媒体流改用`HTMLMediaElement.srcObject`解决
+```javascript
+	video.src = URL.createObjectURL(stream)
+	// 改用此 (stream)为之前getUserMedia获取的媒体流
+	video.srcObject = stream
+```
  
 ## Q:如果多图片多input上传
 #### A:所谓的多图片上传不是单纯的使用`multiple`进行设置，而是多个input标签以同一字段进行上传，而使用同一name会被最后一个空值input覆盖，而且input并不存在name[]的使用方法（？需要查查）,所以需要用js进行数组填充拼接为`FilesList`后通过`FormData`进行上传

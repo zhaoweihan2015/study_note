@@ -51,3 +51,10 @@ if(!navigator.userAgent.match(/Html5Plus/i)) {
 	return;									
 }												
 ```
+### 6.JSBridge
+#### js与Native之间的桥梁，负责js与Native之间通讯，JSBridge也被称为Hybrid app
+#### H5->通过某种方式触发一个url->Native捕获到url,进行分析->原生做处理->Native调用H5的JSBridge对象传递回调
+#### 建立桥梁
+```javascript
+	var JSBridge = window.JSBridge || (window.JSBridge = {});
+```
