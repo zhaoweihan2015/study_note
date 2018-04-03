@@ -162,3 +162,11 @@ function check () {
 ```
 #### PS:v-cloak不用每一条都加，在总标签上添加既即可
 #### PS的PS:v-cloak需要和display:none配合使用，否则无效
+
+## Q:webpack报错`Cannot find module 'webpack-cli/bin/config-yargs'`
+#### 原因是`webpack`与`webpack-dev-server`版本不对应，如果直接选择最高版本，两个模块内版本是不对应的，所以要退级使用
+#### 选择使用`webpack@2.6.1`与`webpack-dev-server@2.11.2`(查了mpvue-cli中使用的是这两个版本)
+```cmd
+	npm install webpack@2.6.1 --save-dev
+	npm install webpack-dev-server@2.11.2 --save-dev
+```
