@@ -175,3 +175,17 @@ npm install webpack-dev-server@2.11.2 --save-dev
 ```cmd
 npm install extract-test-webpack-plugin@2.0.0 --save-dev
 ```
+### Q:在IOS中Date相关方法（例如：getHours()）返回NaN
+#### 在正常使用new Date()是正常的，而使用字符串传参时候，比如new Date('2018-05-19 12:00:00')这种形式，在IOS下调用getHours()等方法返回NaN
+```javascript
+	// IOS
+	new Date('2018-05-19 12:00:00').getHours() // NaN
+```
+#### 解决方法是改用 2018/05/09 12:00:00 这种形式
+```javascript
+	var now - new Date('2018/05/19 12:00:00')
+```
+#### 如果所使用的时间字符串由其他来源获取，可以采用正则表达式和String的replace方法进行替换
+```javascript
+	new Date("2018-05-19".replace(/-/g,'/'))
+```
